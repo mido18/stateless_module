@@ -6,7 +6,7 @@ Ex:
 
 ```ruby
 module YourModule
-  acts_as_stateless_module
+  stateless_module
 
   def some_method
     42
@@ -45,6 +45,6 @@ module you define as stateles won't be able to be included or extended elsewhere
 
 This might add a bit of safety.
 
-Also declaring `acts_as_stateless_module` is a bit more descriptive than
+Also declaring `stateless_module` is a bit more descriptive than
 `extend self`.
 
