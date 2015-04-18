@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Simple lib for semi-stateless modules.}
   spec.description   = %q{A simple lib for semi-stateless modules in Ruby.}
-  spec.homepage      = "https://github.com/jwhiteman/statless_module"
+  spec.homepage      = "https://github.com/jwhiteman/stateless_module"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
