@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 module TestModule
-  include StatelessModule
+  acts_as_stateless_module
 
   def some_method
     42

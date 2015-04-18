@@ -1,3 +1,5 @@
+require "stateless_module/module"
+
 module StatelessModule
   class << self
     def included(base)
