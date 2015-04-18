@@ -2,7 +2,11 @@
 
 A simple lib that wraps `extend self` in Ruby modules.
 
-Ex:
+## Installation
+
+`gem install stateless_module'
+
+## Examples
 
 ```ruby
 module YourModule
@@ -29,8 +33,14 @@ You could then use `YourModule` as a semi-stateless module /  namespace:
 ```ruby
 YourModule.some_method
 # => 42
+
 YourModule.complex_method
 # => 7
+
+class SomeClass
+  include YourModule
+end
+# => Error
 ```
 
 ## Why not just use `module_function` ?
@@ -43,7 +53,8 @@ It's not really an exact replacement of `extend self`.
 You could - and maybe you should. But this lib also makes it so that any
 module you define as stateles won't be able to be included or extended elsewhere.
 
-This might add a bit of safety.
+This adds a bit of safety by enforcing that your module won't get mixed up
+in some other class / modules state.
 
 Also declaring `stateless_module` is a bit more descriptive than
 `extend self`.
