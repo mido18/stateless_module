@@ -37,8 +37,15 @@ YourModule.some_method
 YourModule.complex_method
 # => 7
 
+# safety: your module won't get accidentally included elsewhere
 class SomeClass
   include YourModule
+end
+# => Error
+
+# safety: your module won't get accidentally extended elsewhere
+class SomeClass
+  extend YourModule
 end
 # => Error
 ```
@@ -50,11 +57,11 @@ It's not really an exact replacement of `extend self`.
 
 ## OK. Why not just use `extend self` ?
 
-You could - and maybe you should. But this lib also makes it so that any
+You could - and maybe you should. But stateless_module also makes it so that any
 module you define as stateles won't be able to be included or extended elsewhere.
 
 This adds a bit of safety by enforcing that your module won't get mixed up
-in some other class / modules state.
+in some other object's state.
 
 Also declaring `stateless_module` is a bit more descriptive than
 `extend self`.
