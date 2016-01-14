@@ -27,7 +27,7 @@ describe StatelessModule do
     expect(TestModule.complex_method).to eq(7)
   end
 
-  it "throws an error if some schmuck tries to include a stateles module" do
+  it "throws an error if someone tries to include a stateles module" do
     expect do
       class Schmuck
         include TestModule
@@ -35,7 +35,7 @@ describe StatelessModule do
     end.to raise_error("TestModule is a Stateless Module. Don't include it elsewhere.")
   end
 
-  it "throws an error it some some schmuck tries to extend a stateless module" do
+  it "throws an error it some someone tries to extend a stateless module" do
     expect do
       class Schmuck
         extend TestModule
