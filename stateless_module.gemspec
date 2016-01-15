@@ -9,6 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Jim Whiteman"]
   spec.email         = ["jimtron9000@gmail.com"]
 
+  spec.required_ruby_version = '>= 2.0.0'
+
   spec.summary       = %q{Simple lib for semi-stateless modules.}
   spec.description   = %q{A simple lib for semi-stateless modules in Ruby.}
   spec.homepage      = "https://github.com/jwhiteman/stateless_module"

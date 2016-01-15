@@ -30,6 +30,8 @@ Or you could just save yourself the hassle and use this gem.
 
 `gem install stateless_module'
 
+stateless_module makes use of <a href="http://ruby-doc.org/core-2.0.0/TracePoint.html" target="_blank">TracePoint</a> so it's only good for Ruby 2.0+
+
 ## Usage
 
 Simply call the `stateless` function from within your module:
