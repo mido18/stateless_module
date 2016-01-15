@@ -19,7 +19,8 @@ Maybe. But all of those approaches lack something: `module_function` falls down 
 a singleton is an _instance_ of a thing, which is what we're trying to get away from here.
 
 A frozen module would be very close, indeed, to what this library offers, but you'd still have no protection against any instance variables themselves
-being mutated.
+being mutated; you'd also need a decent amount of documentation to make your intentions clear to other developers. If you had several frozen modules
+operating this way, then you'd end up with some unpleasant boilerplate you'd seek to get rid of.
 
 At the end of the day, you could write all of this code in under an hour.
 
@@ -56,6 +57,3 @@ end
 MyModule.some_function
 MyModule.another_function
 ```
-
-Easy.
-
