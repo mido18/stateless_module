@@ -1,86 +1,52 @@
 # StatelessModule
 
-A simple lib that wraps `extend self` in Ruby modules.
+A dead simple little library to help create stateless / immutable modules in Ruby.
+
+Once you declare that your module is stateless, then it will be protected from being included or extended
+elsewhere and all of its instance and class variables will be protected from mutation.
+
+Ruby is a great object oriented language, but sometimes you want to carve out a small island of sanity where you have no state to keep track of
+and where you can be guaranteed that your code won't be used out of context (e.g threading).
+
+You can read about some of the benefits to this approach <a href="http://stackoverflow.com/questions/844536/advantages-of-stateless-programming" target="_blank">here</a>.
+
+## Derp
+
+> This is stupid. I could just use `module_function`, or `extend self`, or a frozen singleton, or a frozen module, or _blank_ to do the same thing...
+
+Maybe. But all of those approaches lack something: `module_function` falls down with private methods; `extend self` offers zero protection against mutation
+(or being included elsewhere); a frozen singleton would be pretty close, but you'd still be able to mutate instance variables and, semantically,
+a singleton is an _instance_ of a thing, which is what we're trying to get away from here.
+
+A frozen module would be very close, indeed, to what this library offers, but you'd still have no protection against any instance variables themselves
+being mutated.
+
+At the end of the day, you could write all of this code in under an hour.
+
+Or you could just save yourself the hassle and use this gem.
+
 
 ## Installation
 
 `gem install stateless_module'
 
-## Justification
-
-### Style Guides & Static Code Analyzers
-
-Some [style guides](https://github.com/bbatsov/ruby-style-guide#module-function) make `extend self` verboten,
-which is absurd, but sometimes this is out of your control.
-
-As well, subjectively, declaring `stateless_module` is a bit more descriptive than `extend self`.
-
-### Why not just use `module_function` ?
-
-`module_function` has different semantics than `extend self`. In particular, they handle private methods differently.
-
 ## Usage
 
-Simply include StatelessModule in your Module:
+Simply call the `stateless` function from within your module:
 
 ```ruby
 module MyModule
-  include StatelessModule
-end
-```
-
-If you want to have a `stateless_module` macro that is available in all Modules, you can
-add a slight monkey-patch to the Module class:
-
-```ruby
-class Module
-  def stateless_module
-    include StatelessModule
-  end
-end
-```
-
-But this behavior is not added by default. It's up to you to include `StatelessModule`
-in a way that is safe for _your_ application.
-
-## Example
-
-```ruby
-module YourModule
   stateless_module
 
-  def some_method
-    42
+  def some_function
+    # ...
   end
 
-  def complex_method
-    some_private_method
+  def another_function
+    # ...
   end
 
-  private
-
-  def some_private_method
-    7
-  end
+  # etc...
 end
 ```
 
-```ruby
-YourModule.some_method
-# => 42
-
-YourModule.complex_method
-# => 7
-
-# safety: your module won't get accidentally included elsewhere
-class SomeClass
-  include YourModule
-end
-# => Error
-
-# safety: your module won't get accidentally extended elsewhere
-class SomeClass
-  extend YourModule
-end
-# => Error
-```
