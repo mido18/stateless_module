@@ -10,7 +10,7 @@ and where you can be guaranteed that your code won't be used out of context (e.g
 
 You can read about some of the benefits to this approach <a href="http://stackoverflow.com/questions/844536/advantages-of-stateless-programming" target="_blank">here</a>.
 
-## Derp
+## Why?
 
 > This is stupid. I could just use `module_function`, or `extend self`, or a frozen singleton, or a frozen module, or _blank_ to do the same thing...
 
@@ -51,4 +51,11 @@ module MyModule
   # etc...
 end
 ```
+
+```ruby
+MyModule.some_function
+MyModule.another_function
+```
+
+Easy.
 
