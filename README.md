@@ -1,4 +1,4 @@
-# StatelessModule
+# Stateless Module
 
 A dead simple little library to help create stateless / immutable modules in Ruby.
 
@@ -20,7 +20,7 @@ stateless_module makes use of <a href="http://ruby-doc.org/core-2.0.0/TracePoint
 
 Pretty much exactly what you'd expect:
 
-Simply call the `stateless` function from within your module.
+Simply call the `stateless_module` macro from within your module.
 
 ```ruby
 module MyModule
