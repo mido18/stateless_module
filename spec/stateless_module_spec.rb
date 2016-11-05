@@ -47,7 +47,7 @@ describe StatelessModule do
       class SomeClass
         include TestModule
       end
-    end.to raise_error /TestModule is a Stateless Module. Don't include it elsewhere./i
+    end.to raise_error /is a Stateless Module. Don't include it elsewhere/i
   end
 
   it "throws an error if a class tries to extend a stateless module" do
@@ -55,7 +55,7 @@ describe StatelessModule do
       class SomeClass
         extend TestModule
       end
-    end.to raise_error /TestModule is a Stateless Module. Don't include it elsewhere./i
+    end.to raise_error /is a Stateless Module. Don't extend it elsewhere/i
   end
 
   it "cannot alter instance variables" do

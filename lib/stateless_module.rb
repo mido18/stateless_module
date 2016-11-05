@@ -8,20 +8,13 @@ module StatelessModule
       base.class_eval do
         class << self
           def included(base)
-            raise_stateless_module_error
+            raise "#{self.name} is a Stateless Module. " \
+                  "Don't include it elsewhere."
           end
 
           def extended(base)
-            raise_stateless_module_error
-          end
-
-          #######
-          private
-          #######
-
-          def raise_stateless_module_error
             raise "#{self.name} is a Stateless Module. " \
-                  "Don't include it elsewhere."
+                  "Don't extend it elsewhere."
           end
         end
       end
