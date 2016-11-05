@@ -47,15 +47,15 @@ describe StatelessModule do
       class SomeClass
         include TestModule
       end
-    end.to raise_error("TestModule is a Stateless Module. Don't include it elsewhere.")
+    end.to raise_error /TestModule is a Stateless Module. Don't include it elsewhere./i
   end
 
-  it "throws an error some  tries to extend a stateless module" do
+  it "throws an error if a class tries to extend a stateless module" do
     expect do
       class SomeClass
         extend TestModule
       end
-    end.to raise_error("TestModule is a Stateless Module. Don't include it elsewhere.")
+    end.to raise_error /TestModule is a Stateless Module. Don't include it elsewhere./i
   end
 
   it "cannot alter instance variables" do
