@@ -1,6 +1,6 @@
 # Stateless Module
 
-A little gem to help create stateless immutable modules in Ruby.
+Create stateless immutable modules in Ruby.
 
 Read <a href="https://github.com/jwhiteman/stateless_module/blob/master/spec/stateless_module_spec.rb#L32">the short spec</a> to see what the features are.
 
